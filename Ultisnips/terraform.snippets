@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "${1:name}" {
 	protocol = "${5:tcp}"
 	from_port = ${6:port number}
 	to_port = ${7:$6}
-	${8:source_security_group_id = "\$\{$9\}
+	${8:source_security_group_id = "\$\{$9\}"
 	}${10:cidr_blocks = ["\$\{$11\}"]}${0:${VISUAL}}
 }
 endsnippet
