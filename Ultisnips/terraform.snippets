@@ -1,0 +1,10 @@
+extends terraform_aws.snippets
+
+snippet variable "Define a variable" W
+variable "${1:name}" {
+  ${2:description = "${3}"
+  }${4:type = ${5:"string"}
+  }${6:default = "${7}"}
+}
+endsnippet
+

@@ -1,0 +1,12 @@
+{
+  "name" : "terraform-snippets",
+  "author" : "Mark Bainter <http://litmus.com>",
+  "repository" : {"type": "git", "url": "git://github.com/mbainter/terraform-snippets.git"},
+  "dependencies" : {
+    "snipmate": {
+      "type": "git",
+      "url": "https://github.com/SirVer/ultisnips"
+    }
+  },
+  "description" : "Vim snippets file for Terraform"
+}
