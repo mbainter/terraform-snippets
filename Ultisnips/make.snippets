@@ -1,0 +1,29 @@
+snippet "Terraform" "Default Terraform Makefile"
+.PHONY: all plan apply
+.DEFAULT_GOAL := all
+
+all: plan
+
+refresh:
+	terragrunt refresh
+
+plan:
+	-@if [ -e '.makefile_tf_plan' ]; then \
+		rm -f .makefile_tf_plan .makefile_tf_plan.ok >/dev/null; \
+	fi
+	terragrunt get
+	terragrunt plan -out .makefile_tf_plan;
+
+okplan:
+	@mv .makefile_tf_plan .makefile_tf_plan.ok
+
+
+apply:
+	@if [ ! -e '.makefile_tf_plan.ok' ]; then \
+	echo "No approved planfile exists. Did you forget to make the 'plan' or 'okplan' targets?"; \
+		exit 1; \
+	fi
+	terragrunt apply .makefile_tf_plan.ok
+	-@rm -f .makefile_tf_plan.ok 2>/dev/null
+	terragrunt remote push
+endsnippet
